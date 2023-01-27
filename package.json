@@ -1,0 +1,36 @@
+{
+  "name": "boxicons-quasar",
+  "version": "1.0.1",
+  "description": "All box-icons in a quasar compatible module file",
+  "author": "Arash Shakery <arash.shakery@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arash16/boxicons-quasar.git"
+  },
+  "keywords": [
+    "icon",
+    "quasar",
+    "box-icons"
+  ],
+  "main": "dist/boxicons-quasar.js",
+  "module": "dist/boxicons-quasar.mjs",
+  "typings": "dist/boxicons-quasar.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node generate.js"
+  },
+  "prettier": {
+    "semi": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "prettier": "^1.14.3"
+  }
+}
