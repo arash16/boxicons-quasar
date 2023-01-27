@@ -4,8 +4,12 @@ This package exports all boxicons path strings for usage inside quasar q-icon co
 
 ### Usage
 
+```bash
+yarn add boxicons-quasar
+```
+
 ```vue
-<script>
+<script setup lang="ts">
 import { bxExit } from 'boxicons-quasar';
 </script>
 
