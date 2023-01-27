@@ -1,6 +1,7 @@
 const path = require('path');
 const { readdir, readFile, writeFile } = require('fs/promises');
 const camelCase = require('lodash.camelcase');
+const convert = require('./convert');
 
 // Download from https://boxicons.com
 
@@ -15,26 +16,12 @@ async function generate() {
     for (const ico of files) {
       const id = camelCase(ico.replace(/\.svg$/, ''));
       const cont = await readFile(path.join(basePath, ico), 'utf-8');
-      if (!cont.includes('viewBox="0 0 24 24"')) {
-        console.log('No standard viewbox for:', ico)
-        continue
-      }
 
-      const reExtractPath = /\s+d="([^"]+)"/g;
-      const iconPaths = [];
-      for (let m = reExtractPath.exec(cont); m; m = reExtractPath.exec(cont)) {
-        iconPaths.push(m[1]);
-      }
-
-      if (iconPaths.length) {
-        const iconStr = iconPaths.join('&&');
-        jsonNames.push(id);
-        dtsLines.push(`export declare const ${id}: string;`);
-        jsLines.push(`module.exports.${id} = '${iconStr}';`)
-        mjsLines.push(`export const ${id} = '${iconStr}';`);
-      } else {
-        console.log('No <path> for:', ico);
-      }
+      const iconStr = convert(cont);
+      jsonNames.push(id);
+      dtsLines.push(`export declare const ${id}: string;`);
+      jsLines.push(`module.exports.${id} = '${iconStr}';`)
+      mjsLines.push(`export const ${id} = '${iconStr}';`);
     }
   }
 

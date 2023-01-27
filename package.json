@@ -1,6 +1,6 @@
 {
   "name": "boxicons-quasar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "All box-icons in a quasar compatible module file",
   "author": "Arash Shakery <arash.shakery@gmail.com>",
   "license": "MIT",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "lodash.camelcase": "^4.3.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "svg-parser": "^2.0.4"
   }
 }
